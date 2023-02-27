@@ -1,0 +1,8 @@
+﻿  laba_saod_list_2.cpp
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_list_2\laba_saod_list_2\list_2.h(10): warning C4091: typedef : пропускается слева от "ListElem", когда ни одна переменная не объявлена
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_list_2\laba_saod_list_2\list_2.h(16): warning C4091: typedef : пропускается слева от "List", когда ни одна переменная не объявлена
+  list_2.cpp
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_list_2\laba_saod_list_2\list_2.h(10): warning C4091: typedef : пропускается слева от "ListElem", когда ни одна переменная не объявлена
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_list_2\laba_saod_list_2\list_2.h(16): warning C4091: typedef : пропускается слева от "List", когда ни одна переменная не объявлена
+  Создание кода...
+  laba_saod_list_2.vcxproj -> C:\Users\Роман\source\repos\labs_structures_and_algorithms\laba_saod_list_2\Debug\laba_saod_list_2.exe
