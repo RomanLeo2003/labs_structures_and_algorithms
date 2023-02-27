@@ -1,30 +1,41 @@
 #include "list_1.h"
 
-bool is_Full(List<type> list) {
+bool is_Full(List &list) {
 	return list.count == ARRAY_SIZE;
 }
 
 
-int find(List<type> list, type search) {
-	for (int i = 0; i < ARRAY_SIZE; i++) {
-		if (list.arr[i] == search)
-			return i;
+int find(List &list, type search) {
+	int first = 0;
+	int last = list.count - 1;
+	int mid;
+	while (first <= last) {
+		mid = (first + last) / 2;
+		if (list.arr[mid] == search) {
+			return mid;
+		}
+		else if (list.arr[mid] > search) {
+			last = mid - 1;
+		}
+		else {
+			first = mid + 1;
+		}
 	}
 	return -1;
 }
 
-bool is_Empty(List<type> list) {
+bool is_Empty(List &list) {
 	return list.count == 0;
 }
 
 
-void init_list(List<type> &list) {
+void init_list(List &list) {
 	for (int i = 0; i < ARRAY_SIZE; i++) {
 		list.arr[i] = '\0';
 	}
 }
 
-void push(List<type> &list) {
+void push(List &list) {
 	int command, ind, i; type data;
 	if (is_Full(list)) {
 		std::cout << "Список полон, добавить новый элемент нельзя" << std::endl;
@@ -53,7 +64,7 @@ void push(List<type> &list) {
 	}
 }
 
-void remove(List<type> &list) {
+void remove(List &list) {
 	type data;
 	int ind;
 	if (is_Empty(list)) {
@@ -76,7 +87,7 @@ void remove(List<type> &list) {
 	}
 }
 
-void output_list(List<type> list) {
+void output_list(List list) {
 	if (is_Empty(list)) {
 		std::cout << "Список пуст" << std::endl;
 	}

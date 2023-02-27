@@ -22,7 +22,7 @@ int failure() {
 void menu() {
 	int command;
 	type search_data;
-	List<type> l;
+	List l;
 	while (true) {
 		cout << "\nВыберите команду из списка:\n";
 		cout << "1. Вывод текущего состояния списка на экран\n";

@@ -6,19 +6,19 @@
 
 typedef std::string type;
 
-template <typename T>
+
 struct List {
-	T arr[ARRAY_SIZE];
+	type arr[ARRAY_SIZE];
 	int count = 0;
 };
 
 void menu();
 int failure();
-bool is_Full(List<type> list);
-bool is_Empty(List<type> list);
-int find(List<type> list, type search);
-void init_list(List<type> &list);
-void push(List<type> &list);
-void output_list(List<type> list);
-void remove(List<type> &list);
+bool is_Full(List &list);
+bool is_Empty(List &list);
+int find(List &list, type search);
+void init_list(List &list);
+void push(List &list);
+void output_list(List list);
+void remove(List &list);
 
