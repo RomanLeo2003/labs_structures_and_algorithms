@@ -1,0 +1,160 @@
+#include "list_3.h"
+
+bool is_Empty(LinkedList &list) {
+	return list.first == nullptr;
+}
+
+void find(LinkedList &list, type data) {
+	Node* cur = list.first;
+	int count = 0;
+
+	if (is_Empty(list)) {
+		std::cout << "Список пуст, искать нечего" << std::endl;
+	}
+	else {
+		while (cur != nullptr && cur->data != data) {
+			cur = cur->next;
+			count++;
+		}
+		if (cur != nullptr) std::cout << "Искомый элемент найден под индексом" << count << std::endl;
+		else std::cout << "Элемент не найден" << std::endl;
+	}
+}
+
+void push(LinkedList &list) {
+	int command;
+	Node *cur = list.first, *prev = list.first;
+	type data, push_data;
+	std::cout << "Введите элемент, который хотите добавить" << std::endl;
+	std::cin >> push_data;
+	if (is_Empty(list)) {
+		list.first = new Node;
+		list.first->data = push_data;
+		list.first->next = nullptr;
+		list.count++;
+	}
+	else {
+		std::cout << "Введите элемент, относительно которого хотите выполнить добавление" << std::endl;
+		std::cin >> data;
+		std::cout << "Введите способ добавления:\n0. Вставить перед элементом\n1. Вставить после элемента" << std::endl;
+		command = failure();
+		if (command == 0) {
+			if (list.first->data == data) {
+				list.first = new Node;
+				list.first->next = cur;
+				list.first->data = push_data;
+				list.count++;
+			}
+			else {
+				if (cur != nullptr) cur = cur->next;
+				while (cur != nullptr  && cur->data != data) {
+					cur = cur->next; prev = prev->next;
+				}
+				if (cur != nullptr) {
+					prev->next = new Node;
+					prev->next->next = cur;
+					prev->next->data = push_data;
+					list.count++;
+				}
+				else {
+					std::cout << "Элемент не найден" << std::endl;
+				}
+			}
+		}
+		else if (command == 1) {
+			while (cur != nullptr  && cur->data != data) {
+				cur = cur->next;
+			}
+			if (cur != nullptr) {
+				prev = cur->next;
+				cur->next = new Node;
+				cur->next->next = prev;
+				cur->next->data = push_data;
+				list.count++;
+			}
+			else {
+				std::cout << "Элемент не найден" << std::endl;
+			}
+		}
+		
+	}
+}
+
+type remove(LinkedList &list) {
+	type del_data = '\0', data;
+	Node *cur = list.first, *prev = list.first;
+	std::cout << "Введите информационную часть удаляемого элемента" << std::endl;
+	std::cin >> data;
+
+	if (cur != nullptr) cur = cur->next;
+	while (cur != nullptr && cur->data != data) {
+		cur = cur->next; prev = prev->next;
+	}
+	if (cur != nullptr) {
+		prev->next = cur->next;
+		del_data = cur->data;
+		delete cur;
+		list.count--;
+	}
+	else {
+		std::cout << "Не найдено такого элемента, повторите ввод" << std::endl;
+	}
+	return del_data;
+}
+
+void move_to_del_list(LinkedList &list, LinkedList &del_list) {
+	type data;
+	Node *cur = list.first, *prev = list.first, *del_cur = del_list.first;
+	std::cout << "Введите информационную часть удаляемого элемента" << std::endl;
+	std::cin >> data;
+
+	if (cur != nullptr) cur = cur->next;
+	while (cur != nullptr && cur->data != data) {
+		cur = cur->next; prev = prev->next;
+	}
+	if (cur != nullptr) {
+		prev->next = cur->next;
+		if (is_Empty(del_list)) {
+			del_list.first = cur;
+			del_list.first->next = nullptr;
+			del_list.count++;
+		}
+		else {
+			while (del_cur != nullptr && del_cur->next != nullptr) {
+				del_cur = del_cur->next;
+			}
+			del_cur->next = cur;
+			del_cur->next->next = nullptr;
+			del_list.count++;
+		}
+		list.count--;
+	}
+	else {
+		std::cout << "Не найдено такого элемента, повторите ввод" << std::endl;
+	}
+}
+
+void destroy(LinkedList &list) {
+	Node *cur = list.first;
+	while (cur != nullptr) {
+		list.first = list.first->next;
+		delete cur;
+		cur = list.first;
+		list.count--;
+	}
+}
+
+void output_list(LinkedList &list) {
+
+	if (is_Empty(list)) {
+		std::cout << "Список пуст" << std::endl;
+	}
+	else {
+		Node *cur = list.first;
+		while (cur != nullptr) {
+			std::cout << cur->data << "  ";
+			cur = cur->next;
+		}
+	}
+	
+}
