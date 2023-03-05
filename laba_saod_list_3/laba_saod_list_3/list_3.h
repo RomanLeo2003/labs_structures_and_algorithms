@@ -13,6 +13,8 @@ struct LinkedList {
 	int count = 0;
 };
 
+//void search_with_prev(LinkedList &list, Node *cur, Node *prev, type data);
+void push_front(LinkedList &list, Node *cur);
 type remove(LinkedList &list);
 void find(LinkedList &list, type data);
 //int find_prev(LinkedList &list, type data);

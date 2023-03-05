@@ -16,7 +16,7 @@ void find(LinkedList &list, type data) {
 			cur = cur->next;
 			count++;
 		}
-		if (cur != nullptr) std::cout << "Искомый элемент найден под индексом" << count << std::endl;
+		if (cur != nullptr) std::cout << "Искомый элемент найден под индексом: " << count << std::endl;
 		else std::cout << "Элемент не найден" << std::endl;
 	}
 }
@@ -80,26 +80,40 @@ void push(LinkedList &list) {
 	}
 }
 
+
+
 type remove(LinkedList &list) {
 	type del_data = '\0', data;
 	Node *cur = list.first, *prev = list.first;
 	std::cout << "Введите информационную часть удаляемого элемента" << std::endl;
 	std::cin >> data;
-
-	if (cur != nullptr) cur = cur->next;
-	while (cur != nullptr && cur->data != data) {
-		cur = cur->next; prev = prev->next;
-	}
-	if (cur != nullptr) {
-		prev->next = cur->next;
-		del_data = cur->data;
+	if (list.first->data == data) {
+		list.first = list.first->next;
 		delete cur;
 		list.count--;
 	}
 	else {
-		std::cout << "Не найдено такого элемента, повторите ввод" << std::endl;
+		if (cur != nullptr) cur = cur->next;
+		while (cur != nullptr && cur->data != data) {
+			cur = cur->next; prev = prev->next;
+		}
+		if (cur != nullptr) {
+			prev->next = cur->next;
+			del_data = cur->data;
+			delete cur;
+			list.count--;
+		}
+		else {
+			std::cout << "Не найдено такого элемента, повторите ввод" << std::endl;
+		}
 	}
 	return del_data;
+}
+
+void push_front(LinkedList &list, Node *cur) {
+	list.first = cur;
+	list.first->next = nullptr;
+	list.count++;
 }
 
 void move_to_del_list(LinkedList &list, LinkedList &del_list) {
@@ -107,17 +121,10 @@ void move_to_del_list(LinkedList &list, LinkedList &del_list) {
 	Node *cur = list.first, *prev = list.first, *del_cur = del_list.first;
 	std::cout << "Введите информационную часть удаляемого элемента" << std::endl;
 	std::cin >> data;
-
-	if (cur != nullptr) cur = cur->next;
-	while (cur != nullptr && cur->data != data) {
-		cur = cur->next; prev = prev->next;
-	}
-	if (cur != nullptr) {
-		prev->next = cur->next;
+	if (list.first->data == data) {
+		list.first = list.first->next;
 		if (is_Empty(del_list)) {
-			del_list.first = cur;
-			del_list.first->next = nullptr;
-			del_list.count++;
+			push_front(del_list, cur);
 		}
 		else {
 			while (del_cur != nullptr && del_cur->next != nullptr) {
@@ -130,7 +137,28 @@ void move_to_del_list(LinkedList &list, LinkedList &del_list) {
 		list.count--;
 	}
 	else {
-		std::cout << "Не найдено такого элемента, повторите ввод" << std::endl;
+		if (cur != nullptr) cur = cur->next;
+		while (cur != nullptr && cur->data != data) {
+			cur = cur->next; prev = prev->next;
+		}
+		if (cur != nullptr) {
+			prev->next = cur->next;
+			if (is_Empty(del_list)) {
+				push_front(del_list, cur);
+			}
+			else {
+				while (del_cur != nullptr && del_cur->next != nullptr) {
+					del_cur = del_cur->next;
+				}
+				del_cur->next = cur;
+				del_cur->next->next = nullptr;
+				del_list.count++;
+			}
+			list.count--;
+		}
+		else {
+			std::cout << "Не найдено такого элемента, повторите ввод" << std::endl;
+		}
 	}
 }
 
