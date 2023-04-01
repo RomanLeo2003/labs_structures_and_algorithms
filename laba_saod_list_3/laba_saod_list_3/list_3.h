@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <crtdbg.h>
 
 typedef int type;
 

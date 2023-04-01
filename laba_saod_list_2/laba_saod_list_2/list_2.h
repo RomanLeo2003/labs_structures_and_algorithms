@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-#define ARRAY_SIZE 3
+#define ARRAY_SIZE 5
 typedef int type;
 
 typedef struct ListElem {

@@ -3,7 +3,6 @@
 void find(List &list, int data) {
 	ListElem* cur{ list.head };
 	int count = 0;
-
 	if (is_Empty(list)) {
 		std::cout << "—писок пуст, искать нечего" << std::endl;
 	}
@@ -68,7 +67,7 @@ void push_front(List &list, int data) {
 
 void push(List &list) {
 	int command;
-	ListElem *cur = list.head;
+	ListElem *cur{ list.head };
 	int data, push_data;
 	std::cout << "¬ведите элемент, который хотите добавить" << std::endl;
 	std::cin >> push_data;

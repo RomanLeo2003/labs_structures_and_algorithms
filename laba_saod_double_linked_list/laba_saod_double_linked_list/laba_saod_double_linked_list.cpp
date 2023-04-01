@@ -1,6 +1,7 @@
 ﻿#include "double_linked_list.h"
 
 int main() {
+	std::ios::sync_with_stdio(0); std::cin.tie(0); std::cout.tie(0);
 	setlocale(LC_ALL, "rus");
 	menu();
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);

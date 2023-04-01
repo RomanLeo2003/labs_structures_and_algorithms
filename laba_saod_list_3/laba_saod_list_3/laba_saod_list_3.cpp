@@ -3,6 +3,8 @@
 int main() {
 	setlocale(LC_ALL, "rus");
 	menu();
+	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
 
@@ -36,6 +38,7 @@ void menu() {
 		command = failure();
 		switch (command) {
 		case 0:
+			destroy(l);
 			return;
 			break;
 		case 1:
@@ -52,19 +55,22 @@ void menu() {
 			push(l);
 			break;
 		case 5:
-			std::cout << "Как выполнить удаление элемента?\n0. Удалить с освобождением памяти\n1. Добавить элемент в конец вспомогательного списка" << std::endl;
-			choice = failure();
-			if (choice == 0) {
-				remove(l);
-			}
-			else if (choice == 1) {
-				move_to_del_list(l, del_l);
+			if (is_Empty(l)) {
+				std::cout << "Список пуст, удалять нечего" << std::endl;
 			}
 			else {
-				std::cout << "Такой команды нет в меню" << std::endl;
+				std::cout << "Как выполнить удаление элемента?\n0. Удалить с освобождением памяти\n1. Добавить элемент в конец вспомогательного списка" << std::endl;
+				choice = failure();
+				if (choice == 0) {
+					remove(l);
+				}
+				else if (choice == 1) {
+					move_to_del_list(l, del_l);
+				}
+				else {
+					std::cout << "Такой команды нет в меню" << std::endl;
+				}
 			}
-			
-
 			break;
 		case 6:
 			std::cout << "Введите информационную часть искомого элемента: " << std::endl;

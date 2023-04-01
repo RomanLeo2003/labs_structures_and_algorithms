@@ -28,28 +28,25 @@ type remove(List &list) {
 		}
 	}
 	else {
-		std::cout << "jopa" << std::endl;
+		std::cout << "Элемент не найден" << std::endl;
 	}
 	
 	return del_data;
 }
 
 int find(List &list, type data) {
-	int cur_ind = list.head;
+	int cur_ind = 0;
 	ListElem cur = list.arr[list.head];
-	while (cur_ind != -1) {
-		if (cur.data == data)
+	while (cur_ind < ARRAY_SIZE) {
+		if (list.arr[cur_ind].data == data)
 			return cur_ind;
-		cur_ind = cur.next;
-		if (cur.next != -1) 
-			cur = list.arr[cur.next];
-		
+		cur_ind++;
 	}
 	return -1;
 }
 
 int find_prev(List &list, type data) {
-	int cur_ind = 0, prev_ind = 0;
+	int cur_ind = list.head, prev_ind = list.head;
 	ListElem cur = list.arr[list.head];
 	ListElem prev = list.arr[list.head];
 	if (list.arr[list.head].next != -1) { cur = list.arr[cur.next]; cur_ind = cur.next; }
@@ -86,7 +83,6 @@ void output_list(List &list) {
 				cur = list.arr[cur.next];
 			}
 			c++;
-			
 		}
 	}
 	else {
@@ -94,9 +90,19 @@ void output_list(List &list) {
 	}
 }
 
+int find_max_next(List &list) {
+	int max_j = -2;
+	for (int i = 0; i < ARRAY_SIZE; i++) {
+		if (list.arr[i].next > max_j) {
+			max_j = list.arr[i].next;
+		}
+	}
+	return max_j == -1 ? max_j + 2 : max_j + 1;
+}
+
 void push(List &list) {
 	ListElem cur = list.arr[list.head];
-	int command, ind, cur_ind = 0, j = 0, ind_prev = 0;
+	int command, ind, cur_ind = 0, j = find_max_next(list), ind_prev = 0;
 	type data, data_push;
 	if (is_Full(list)) {
 		std::cout << "Список полон, новый элемент добавить нельзя" << std::endl;
@@ -116,20 +122,17 @@ void push(List &list) {
 			std::cout << "Введите способ добавления:\n0. Вставить перед элементом\n1. Вставить после элемента" << std::endl;
 			command = failure();
 			if (command == 1) {
-				std::cout << "Введите данные которые хотите добавить" << std::endl;
-				std::cin >> data_push;
-
-				for (j = 1; j < ARRAY_SIZE; j++) if (list.arr[j - 1].next == -1) {  break; }
-
-				list.arr[j].next = list.arr[ind].next; 
-				list.arr[ind].next = j;
-				list.arr[j].data = data_push;
-				list.count++;
+					std::cout << "Введите данные которые хотите добавить" << std::endl;   /////////////////////// когда вставляется между!!!! втсавляется после всставленного между
+					std::cin >> data_push;
+					list.arr[j].next = list.arr[ind].next;
+					list.arr[ind].next = j;
+					list.arr[j].data = data_push;
+					list.count++;
 			}
 			else if (command == 0) {
 				if (ind == list.head) {
 					int cur_head = list.head;
-					for (j = 1; j < ARRAY_SIZE; j++) if (list.arr[j - 1].next == -1) break;
+					j = find_max_next(list);
 					list.head = j;
 					list.arr[list.head].next = cur_head;
 					std::cout << "Введите данные которые хотите добавить" << std::endl;
@@ -139,10 +142,9 @@ void push(List &list) {
 				}
 				else {
 					ind_prev = find_prev(list, data);
-					std::cout << "Введите данные которые хотите добавить" << std::endl;
+					std::cout << "Введите данные которые хотите добавить" << std::endl;   ///////////////////////
 					std::cin >> data_push;
-					j = list.arr[0].next;
-					for (j = 1; j < ARRAY_SIZE; j++) if (list.arr[j - 1].next == -1) break;
+					j = find_max_next(list);
 					list.arr[j].next = ind;
 					list.arr[ind_prev].next = j;
 					list.arr[j].data = data_push;

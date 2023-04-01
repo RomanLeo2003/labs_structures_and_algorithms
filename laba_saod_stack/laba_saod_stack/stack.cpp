@@ -34,13 +34,16 @@ stack *init(int data) {
 
  void move_to_del_stack(stack **head, stack **del_stack) {
 	 stack *cur;
-	 int data = (*head)->data;
+	 int data;
 	 if ((*head) != nullptr) {
+		 data = (*head)->data;
 		 cur = (*head);
 		 (*head) = (*head)->Next;
 		 cur->Next = (*del_stack);
 		 (*del_stack) = cur;
-		 std::cout << "Удаленное число:" << cur->data << std::endl;
+	 }
+	 else {
+		 std::cout << "Стек, из которого выполнена попытка удаления - пуст" << std::endl;
 	 }
 }
 
@@ -82,7 +85,7 @@ void output_stack(struct stack *head) {
 	struct stack *cur = head;
 	std::cout << "Вывод содержания стека: " << std::endl;
 	for (int i = 0; i < len_stack(head); i++) {
-		std::cout << i << "-й элемерт стека: " << cur->data << std::endl;
+		std::cout << i << "-й элемент стека: " << cur->data << std::endl;
 		cur = cur->Next;
 	}
 }

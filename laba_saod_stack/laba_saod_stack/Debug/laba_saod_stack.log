@@ -1,3 +1,2 @@
-﻿  laba_saod_stack.cpp
-c:\users\роман\source\repos\laba_saod_stack\laba_saod_stack\laba_saod_stack.cpp(73): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  laba_saod_stack.vcxproj -> C:\Users\Роман\source\repos\laba_saod_stack\Debug\laba_saod_stack.exe
+﻿  stack.cpp
+  laba_saod_stack.vcxproj -> C:\Users\Роман\source\repos\labs_structures_and_algorithms\laba_saod_stack\Debug\laba_saod_stack.exe

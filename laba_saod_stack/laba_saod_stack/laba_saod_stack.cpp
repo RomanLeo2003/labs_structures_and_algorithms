@@ -14,7 +14,7 @@ int main()
 }
 
 void menu() {
-	int command, data;
+	int command, data, command_push, command_pop;
 	stack *head = init_with_no_data(), *del_stack = init_with_no_data();
 	while (true) {
 		cout << "\nВведите номер команды:\n";
@@ -33,10 +33,20 @@ void menu() {
 				else output_stack(head);
 				break;
 			case 2:
-				cout << "Введите число, которые хотите добавить в стек: " << endl;
-				data = failure_int();
-				head = push(head, data);
-				cout << "Число " << data << " добавлено в стек" << endl;
+				cout << "Введите способ добавления элемента:\n" << endl;
+				cout << "0. Добавить с вводом элемента с консоли" << endl;
+				cout << "1. Добавить с вершины вспомогательного стека" << endl;
+				command_push = failure_int();
+				if (command_push == 0) {
+					cout << "Введите число, которые хотите добавить в стек: " << endl;
+					data = failure_int();
+					head = push(head, data);
+					cout << "Число " << data << " добавлено в стек" << endl;
+				}
+				else if (command_push == 1){
+					move_to_del_stack(&del_stack, &head);
+				}
+				
 				break;
 			case 3:
 				if (is_Empty(head)) { cout << "Стек пуст, нечего удалять" << endl; }
@@ -44,10 +54,11 @@ void menu() {
 					cout << "Введите способ удаления элемента:\n" << endl;
 					cout << "0. Удалить с освобождением памяти" << endl;
 					cout << "1. Удалить элемент из главного стека и поместить его во вспомогательный стек" << endl;
-					if (failure_int() == 0) {
+					command_pop = failure_int();
+					if (command_pop == 0) {
 						cout << "Удаленное число: " << pop(&head) << endl;
 					}
-					else {
+					else if (command_pop == 1){
 						move_to_del_stack(&head, &del_stack);
 					}
 				}

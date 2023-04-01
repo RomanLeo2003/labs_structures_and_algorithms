@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#define QUEUE_SIZE 3
+#define QUEUE_SIZE 4
 
 typedef struct queue {
 	int q_array[QUEUE_SIZE];

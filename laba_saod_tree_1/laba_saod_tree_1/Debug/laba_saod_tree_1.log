@@ -1,0 +1,7 @@
+﻿  binary_tree.cpp
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_1\laba_saod_tree_1\binary_tree.h(10): warning C4091: typedef : пропускается слева от "TreeNode", когда ни одна переменная не объявлена
+  laba_saod_tree_1.cpp
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_1\laba_saod_tree_1\binary_tree.h(10): warning C4091: typedef : пропускается слева от "TreeNode", когда ни одна переменная не объявлена
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_1\laba_saod_tree_1\laba_saod_tree_1.cpp(5): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+  laba_saod_tree_1.vcxproj -> C:\Users\Роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_1\Debug\laba_saod_tree_1.exe

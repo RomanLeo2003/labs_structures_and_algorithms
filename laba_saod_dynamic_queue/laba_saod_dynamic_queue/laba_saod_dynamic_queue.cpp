@@ -32,7 +32,7 @@ void modeling(queue &q) {
 	char ch;
 	std::cout << "Нажмите <q> или <Q> для выхода из режима моделирования очереди" << std::endl;
 	while (true) {
-		Sleep(2000);
+		Sleep(500);
 		if (is_Empty(q)) x = 1;
 		else x = (rand() % 2 == 0);
 
@@ -43,7 +43,7 @@ void modeling(queue &q) {
 			if (_kbhit()) key = _getch(); if ((key == 'q') || (key == 'Q')) { std::cout << "Завершение моделирования работы очереди..." << std::endl; break; }
 			system("cls");
 			std::cout << "Генерация и добавление " << n << " элемент(ов) в очередь..." << std::endl;
-			Sleep(2000);
+			Sleep(500);
 			for (int i = 0; i < n; i++) {
 				ch = static_cast<char>(65 + rand() % 26);
 				push_back(q, ch);
@@ -54,7 +54,7 @@ void modeling(queue &q) {
 			if (_kbhit()) key = _getch(); if ((key == 'q') || (key == 'Q')) { std::cout << "Завершение моделирования работы очереди..." << std::endl; break; }
 			system("cls");
 			std::cout << "Извлечение " << n << " элемента(ов) из очереди..." << std::endl;
-			Sleep(1000);
+			Sleep(500);
 			for (int i = 0; i < n; i++)
 				if (!is_Empty(q)) pop(q);
 		}
@@ -100,7 +100,6 @@ void menu(queue &q) {
 				output_queue(q);
 				break;
 			case 0:
-				destroy(q);
 				return;
 				break;
 		}

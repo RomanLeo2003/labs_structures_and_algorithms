@@ -1,0 +1,4 @@
+﻿  LinkedList.cpp
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_two_dim_list\laba_saod_two_dim_list\linkedlist.h(8): warning C4091: typedef : пропускается слева от "ListElem", когда ни одна переменная не объявлена
+c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_two_dim_list\laba_saod_two_dim_list\linkedlist.h(13): warning C4091: typedef : пропускается слева от "List", когда ни одна переменная не объявлена
+  laba_saod_two_dim_list.vcxproj -> C:\Users\Роман\source\repos\labs_structures_and_algorithms\laba_saod_two_dim_list\Debug\laba_saod_two_dim_list.exe
