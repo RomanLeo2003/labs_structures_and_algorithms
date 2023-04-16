@@ -1,10 +1,10 @@
 ﻿  binary_tree.cpp
-c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(12): warning C4091: typedef : пропускается слева от "TreeNode", когда ни одна переменная не объявлена
-c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(18): warning C4091: typedef : пропускается слева от "Stack", когда ни одна переменная не объявлена
+C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(12,2): warning C4091: typedef : пропускается слева от "TreeNode", когда ни одна переменная не объявлена
+C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(18,2): warning C4091: typedef : пропускается слева от "Stack", когда ни одна переменная не объявлена
   laba_saod_tree_3.cpp
-c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(12): warning C4091: typedef : пропускается слева от "TreeNode", когда ни одна переменная не объявлена
-c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(18): warning C4091: typedef : пропускается слева от "Stack", когда ни одна переменная не объявлена
-c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\laba_saod_tree_3.cpp(4): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(12,2): warning C4091: typedef : пропускается слева от "TreeNode", когда ни одна переменная не объявлена
+C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.h(18,2): warning C4091: typedef : пропускается слева от "Stack", когда ни одна переменная не объявлена
+C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\laba_saod_tree_3.cpp(4,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   Создание кода...
-c:\users\роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.cpp(13): warning C4715: find: значение возвращается не при всех путях выполнения
-  laba_saod_tree_3.vcxproj -> C:\Users\Роман\source\repos\labs_structures_and_algorithms\laba_saod_tree_3\Debug\laba_saod_tree_3.exe
+C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\laba_saod_tree_3\binary_tree.cpp(13): warning C4715: find: значение возвращается не при всех путях выполнения
+  laba_saod_tree_3.vcxproj -> C:\Users\user\source\repos\test\labs_structures_and_algorithms\laba_saod_tree_3\Debug\laba_saod_tree_3.exe

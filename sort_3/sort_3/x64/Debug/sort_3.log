@@ -1,0 +1,4 @@
+﻿  sorts.cpp
+C:\Users\user\source\repos\labs_structures_and_algorithms\sort_3\sort_3\sorts.cpp(301,2): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\user\source\repos\labs_structures_and_algorithms\sort_3\sort_3\sorts.cpp(350,8): warning C4101: cur: неиспользованная локальная переменная
+  sort_3.vcxproj -> C:\Users\user\source\repos\labs_structures_and_algorithms\sort_3\x64\Debug\sort_3.exe

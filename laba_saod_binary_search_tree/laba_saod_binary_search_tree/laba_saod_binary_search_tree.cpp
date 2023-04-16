@@ -26,8 +26,11 @@ void menu() {
 
 		switch (command) {
 		case 0:
-			destroy(root);
-			root = nullptr;
+			if (root != nullptr) {
+				destroy(root);
+				root = nullptr;
+			}
+			
 			return;
 			break;
 		case 1:
@@ -68,7 +71,10 @@ void menu() {
 		case 8:
 			std::cout << "Введите ключ удаляемого элемента:" << std::endl;
 			std::cin >> n;
-			remove(root, n);
+			if (root != nullptr) {
+				remove(root, n);
+			}
+			
 		}
 	}
 
