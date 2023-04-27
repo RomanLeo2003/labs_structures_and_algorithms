@@ -27,3 +27,4 @@ void bucket_sort(std::vector<int>& arr);
 void radix_sort(std::vector<int>& arr);
 void fill_array_for_radix(std::vector<int>& arr);
 void generic_bucket_sort(std::vector<int> &numbers);
+void fill_array_for_radix_2(std::vector<int>& arr);

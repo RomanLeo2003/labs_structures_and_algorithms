@@ -20,7 +20,7 @@ void bubble_sort(std::vector<int>& arr) {
 	int n_reeqs{ 0 };
 
 	for (int i{ 0 }; i < arr.size() - 1; i++) {
-		for (int j{ 0 }; j < arr.size() - 1; j++) {
+		for (int j{ 0 }; j < arr.size() - i - 1; j++) {
 			n_comps++;
 			if (comp(arr[j], arr[j + 1])) {
 				n_reeqs += 3;
@@ -42,26 +42,25 @@ void insertion_sort(std::vector<int>& arr) {
 	int n_reeqs{ 0 };
 	int i, key, j;
 
-	for (i = 1; i < arr.size(); i++)
-	{
+	for (i = 1; i < arr.size(); i++) {
 		n_reeqs++;
 		key = arr[i];
-		j = i - 1;
+		j = i - 1; 
 		n_comps++;
-		while (j >= 0 && comp(arr[j], key))
-		{
+		while (j >= 0 && comp(arr[j], key)) {
 			n_comps++;
 			arr[j + 1] = arr[j];
 			n_reeqs++;
 			j--;
 		}
 
+		n_comps++;
 		if (arr[j + 1] != key) {
-			n_comps++;
+			//n_comps++;
 			arr[j + 1] = key;
+			n_reeqs++;
 		}
 	}
-
 	std::cout << "Количество сравнений: " << n_comps << std::endl;
 	std::cout << "Количество переприсваиваний: " << n_reeqs << std::endl;
 	std::cout << "Отсортированный массив: ";
@@ -75,13 +74,14 @@ void selection_sort(std::vector<int>& arr) {
 	int n_reeqs{ 0 };
 
 	for (int i{ 0 }; i < arr.size() - 1; i++) {
-		int min_ind = i;
+		int min_ind{ i };
 		for (int j{ i + 1 }; j < arr.size(); j++) {
 			n_comps++;
-			if (comp(arr[min_ind], arr[j])) {
+			if (arr[min_ind] > arr[j]) {
 				min_ind = j;
 			}
 		}
+
 		if (min_ind != i) {
 			n_reeqs += 3;
 			std::swap(arr[i], arr[min_ind]);
@@ -94,15 +94,14 @@ void selection_sort(std::vector<int>& arr) {
 	output_array(arr);
 }
 
+/*
 int partition(std::vector<int> &arr, int start, int end, int &n_comps, int &n_reeqs) {
 	int pivot = arr[end];
 	int pivot_index{ start - 1 };
 
-	for (int i{ start }; i <= end - 1; i++)
-	{
+	for (int i{ start }; i <= end - 1; i++) {
 		n_comps++;
-		if (arr[i] < pivot)
-		{
+		if (arr[i] < pivot) {
 			pivot_index++;
 			std::swap(arr[pivot_index], arr[i]);
 			n_reeqs += 3;
@@ -129,6 +128,7 @@ void quick_sort(std::vector<int> &arr, int start, int end, int &n_comps, int &n_
 		quick_sort(arr, p + 1, end, n_comps, n_reeqs);
 	}
 }
+*/
 
 void heapify(std::vector<int> &arr, int i, int size, int &n_comps, int &n_reeqs) {
 	int largest{ i };
@@ -144,11 +144,50 @@ void heapify(std::vector<int> &arr, int i, int size, int &n_comps, int &n_reeqs)
 		largest = right;
 
 	if (largest != i) {
-		n_reeqs += 3;
-		std::swap(arr[i], arr[largest]);
-		heapify(arr, size, largest, n_comps, n_reeqs);
+		if (arr[largest] != arr[i]) {
+			n_reeqs += 3;
+			std::swap(arr[i], arr[largest]);
+		}
+		heapify(arr, largest, size, n_comps, n_reeqs);
 	}
 }
+
+
+void quick_sort(std::vector<int>& arr, int start, int end, int& n_comps, int& n_assigs) {
+	int pivot{ arr[(start + end) / 2] };
+
+	int low{ start };
+	int high{ end };
+	while (low <= high) {
+		n_comps++;
+		while (arr[low] < pivot) {
+			low++;
+			n_comps++;
+		}
+
+		++n_comps;
+		while (arr[high] > pivot) {
+			high--;
+			n_comps++;
+		}
+
+		if (low <= high) {
+			n_comps++;
+			if (arr[low] != arr[high]) {
+				std::swap(arr[low], arr[high]);
+				n_assigs += 3;
+			}
+			low++;
+			high--;
+		}
+	}
+
+	if (start < high)
+		quick_sort(arr, start, high, n_comps, n_assigs);
+	if (low < end)
+		quick_sort(arr, low, end, n_comps, n_assigs);
+}
+
 
 void heap_sort(std::vector<int> &arr) {
 	std::cout << "Несортированный массив: ";
@@ -163,8 +202,10 @@ void heap_sort(std::vector<int> &arr) {
 	}
 
 	for (int i{ size - 1 }; i >= 0; i--) {
-		n_reeqs += 3;
-		std::swap(arr[0], arr[i]);
+		if (arr[0] != arr[i]) {
+			n_reeqs += 3;
+			std::swap(arr[0], arr[i]);
+		}
 		heapify(arr, 0, i, n_comps, n_reeqs);
 	}
 
@@ -179,20 +220,18 @@ void shell_sort(std::vector<int>& arr) {
 	output_array(arr);
 	int n_comps{ 0 };
 	int n_reeqs{ 0 };
-
-	for (int gap{ (int)arr.size() }; gap > 0; gap /= 2)
-	{
-		for (int i{ gap }; i < arr.size(); ++i)
-		{
+	int temp{};
+	for (int gap{ (int)arr.size() }; gap > 0; gap /= 2) {
+		for (int i{ gap }; i < arr.size(); ++i) {
+			n_reeqs++;
 			int temp{ arr[i] };
 			int j{};
 			n_comps++;
-			for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
-			{
+			for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+				n_comps++;
 				arr[j] = arr[j - gap];
 				n_reeqs++;
 			}
-
 			arr[j] = temp;
 			n_reeqs++;
 		}

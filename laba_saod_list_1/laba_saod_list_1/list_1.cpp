@@ -36,7 +36,7 @@ void init_list(List &list) {
 }
 
 void push(List &list) {
-	int command, ind, i; type data;
+	int command, i; type data;
 	if (is_Full(list)) {
 		std::cout << "Список полон, добавить новый элемент нельзя" << std::endl;
 	}

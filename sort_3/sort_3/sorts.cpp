@@ -9,7 +9,7 @@ void fill_array(std::vector<int>& arr) {
 	int n;
 	std::cin >> n;
 	for (int i{ 0 }; i < n; i++) {
-		arr.push_back(rand() % 100);
+		arr.push_back(rand() % 1000);
 	}
 }
 
@@ -57,6 +57,19 @@ void fill_array_for_radix(std::vector<int>& arr) {
 
 	for (int i{ 0 }; i < n; i++) {
 		arr.push_back(rand() % ((int)(pow(10, m) - 1) - (int)pow(10, m - 1)) + (int)pow(10, m - 1));
+	}
+}
+
+void fill_array_for_radix_2(std::vector<int>& arr) {
+	int n{}, m{};
+	std::cout << "¬ведите размер массива" << std::endl;
+	std::cin >> n;
+
+	std::cout << "¬ведите количество разр€дов у рандомных чисел" << std::endl;
+	std::cin >> m;
+
+	for (int i{ 0 }; i < n; i++) {
+		arr.push_back(rand() % (int)pow(10, m));
 	}
 }
 
@@ -293,7 +306,7 @@ void count_sort(std::vector<int> &arr, int exp)
 {
 	std::vector<int> count(10);
 	std::vector<int> output(arr.size());
-	int i;
+	int i{};
 	for (i = 0; i < arr.size(); i++)
 		count[(arr[i] / exp) % 10]++;
 
@@ -349,7 +362,6 @@ void generic_bucket_sort(std::vector<int> &arr) {
 	output_array(arr);
 	int max{ *std::max_element(arr.begin(), arr.end()) };
 	std::vector<Node*> b(max + 1);
-	Node* cur;
 	for (int i{ 0 }; i < arr.size(); i++) {
 		if (!b[arr[i]]) {
 			b[arr[i]] = new Node;

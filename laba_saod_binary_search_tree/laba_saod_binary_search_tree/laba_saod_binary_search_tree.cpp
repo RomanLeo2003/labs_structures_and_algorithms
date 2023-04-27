@@ -1,7 +1,7 @@
 ﻿#include "binary_search_tree.h"
 
 int main() {
-	srand(time(NULL));
+	// srand(time(0));
 	setlocale(LC_ALL, "rus");
 	menu();
 	return 0;
@@ -23,14 +23,12 @@ void menu() {
 		std::cout << "0 - Завершить программу" << std::endl;
 
 		std::cin >> command;
-
 		switch (command) {
 		case 0:
 			if (root != nullptr) {
 				destroy(root);
 				root = nullptr;
 			}
-			
 			return;
 			break;
 		case 1:

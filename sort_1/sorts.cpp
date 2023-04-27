@@ -20,7 +20,7 @@ void bubble_sort(std::vector<int> &arr) {
 	int n_reeqs{ 0 };
 	
 	for (int i{ 0 }; i < arr.size() - 1; i++) {
-		for (int j{ 0 }; j < arr.size() - 1; j++) {
+		for (int j{ 0 }; j < arr.size() - i - 1; j++) {
 			n_comps++;
 			if (comp(arr[j], arr[j + 1])) {
 				n_reeqs += 3;
@@ -78,7 +78,7 @@ void selection_sort(std::vector<int>& arr) {
 		int min_ind = i;
 		for (int j{ i + 1 }; j < arr.size(); j++) {
 			n_comps++;
-			if (comp(arr[min_ind], arr[j])) {
+			if (arr[min_ind] > arr[j]) {
 				min_ind = j;
 			}
 		}

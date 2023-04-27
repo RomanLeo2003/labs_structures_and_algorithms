@@ -16,7 +16,7 @@ void find(TreeNode *&curr, int key) {
 	}
 }
 
-void in_order(TreeNode *root, int level) {
+void in_order(const TreeNode *root, int level) {
 	if (root == nullptr) return;
 
 	std::cout << std::string(level, ' ') << root->data << '\n';
@@ -25,7 +25,7 @@ void in_order(TreeNode *root, int level) {
 
 }
 
-void pre_order(TreeNode *root, int level) {
+void pre_order(const TreeNode *root, int level) {
 	if (root == nullptr) return;
 
 	pre_order(root->left, level + 4);
@@ -34,12 +34,12 @@ void pre_order(TreeNode *root, int level) {
 
 }
 
-void post_order(TreeNode *root, int level) {
+void post_order(const TreeNode *root, int level) {
 	if (root == nullptr) return;
 
-	pre_order(root->right, level + 4);
+	post_order(root->right, level + 4);
 	std::cout << std::string(level, ' ') << root->data << '\n';
-	pre_order(root->left, level + 4);
+	post_order(root->left, level + 4);
 
 }
 void destroy(TreeNode *&root) {
@@ -121,21 +121,9 @@ void pre_order_count(const TreeNode* root) {
 }
 
 void build_tree(TreeNode *&root, int n) {
+	//root = new TreeNode;
 	for (int i = 0; i < n; i++) {
-		int data = get_number();
-		iter_add_node(root, data);
-	}
-}
-
-void insert(TreeNode *&cur, TreeNode *new_node) {
-	if (cur->data > new_node->data) {
-		cur->left = new_node;
-	}
-	else if (cur->data < new_node->data) {
-		cur->right = new_node;
-	}
-	else {
-		return; ////
+		iter_add_node(root, get_number());
 	}
 }
 
@@ -150,11 +138,11 @@ void remove(TreeNode *&root, int key)
 {
 	TreeNode* curr{ root };
 	find(curr, key);
-	TreeNode* parent { curr->parent };
-    if (curr == nullptr) {
+	if (curr == nullptr) {
 		std::cout << "Не найдено такого элемента" << std::endl;
-        return;
-    }
+		return;
+	}
+	TreeNode* parent { curr->parent };
     if (curr->left == nullptr && curr->right == nullptr) {
         if (curr != root) {
             if (parent->left == curr) {
@@ -167,6 +155,7 @@ void remove(TreeNode *&root, int key)
         else {
             root = nullptr;
         }
+		curr->count--;
         delete curr;
     }
     else if (curr->left && curr->right) {
@@ -188,6 +177,7 @@ void remove(TreeNode *&root, int key)
         else {
             root = child;
         }
+		curr->count--;
         delete curr;
     }
 }

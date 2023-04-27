@@ -51,7 +51,6 @@ void menu() {
 			std::cout << "Количество переприсваиваний: " << qsort_n_reeqs << std::endl;
 			std::cout << "Отсортированный массив: ";
 			output_array(arr1);
-			// std::cout << "ВРЕМЯ СОРТИРОВКИ:" <<  << std::endl;
 			arr1.clear();
 			break;
 

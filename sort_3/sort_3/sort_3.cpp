@@ -75,7 +75,7 @@ void menu() {
 			arr.clear();
 			break;
 		case 9:
-			fill_array_for_radix(arr);
+			fill_uniform_int_array(arr, 1);
 			radix_sort(arr);
 			arr.clear();
 			break;

@@ -13,9 +13,9 @@ typedef struct TreeNode {
 
 void find(TreeNode *&curr, int key);
 void menu();
-void in_order(TreeNode *root, int level);
-void post_order(TreeNode *root, int level);
-void pre_order(TreeNode *root, int level);
+void in_order(const TreeNode *root, int level);
+void post_order(const TreeNode *root, int level);
+void pre_order(const TreeNode *root, int level);
 void destroy(TreeNode *&root);
 void build_tree(TreeNode *&root, int n);
 int get_number();
